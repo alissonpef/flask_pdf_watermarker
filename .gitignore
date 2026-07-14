@@ -1,5 +1,14 @@
-env/
+# Ambientes Virtuais
+venv/
 .venv/
+
+# Cache do Python
 __pycache__/
 *.pyc
+*.py[cod]
+
+# Variáveis de Ambiente
 .env
+
+# Ferramentas usadas
+.ruff_cache/
