@@ -1,125 +1,194 @@
-# AquaMark 💧
+<a id="readme-top"></a>
 
-A robust Flask web application to add custom watermarks (text or image) to your PDF files, protecting your documents simply and efficiently.
+<!-- ESCUDOS DO PROJETO -->
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
-## ✨ Key Features
+<!-- LOGOTIPO DO PROJETO -->
+<br />
+<div align="center">
+  <a href="https://github.com/alissonpef/Flask-PDF-Watermarker">
+    <img src="assets/logo.png" alt="Logo" width="150" height="150">
+  </a>
 
-- **Dual Watermark Types:** Choose between applying a custom text or an image (like a logo) as a watermark.
-- **Full Style Control:** Customize the opacity, color, and font size (for text) to create the perfect protection.
-- **Secure In-Memory Processing:** Uploads and handles files without temporarily saving them to the server's disk.
-- **Interactive UI:** The form dynamically adapts to your choice of watermark type (text or image).
-- **Direct Download:** Download the new, protected PDF file directly from the application after processing.
+  <h3 align="center">AquaMark 💧</h3>
 
-## 🛠️ Tech Stack
+  <p align="center">
+    Uma aplicação web robusta em Flask para adicionar marcas d'água personalizadas (texto ou imagem) aos seus arquivos PDF, protegendo seus documentos de forma simples e eficiente.
+    <br />
+    <br />
+    <a href="https://github.com/alissonpef/Flask-PDF-Watermarker/issues/new?labels=bug&template=bug-report---.md">Reportar Bug</a>
+    &middot;
+    <a href="https://github.com/alissonpef/Flask-PDF-Watermarker/issues/new?labels=enhancement&template=feature-request---.md">Solicitar Recurso</a>
+  </p>
+</div>
 
-#### Backend
+<!-- ÍNDICE -->
+<details>
+  <summary>Índice</summary>
+  <ol>
+    <li>
+      <a href="#sobre-o-projeto">Sobre O Projeto</a>
+      <ul>
+        <li><a href="#construído-com">Construído Com</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#começando">Começando</a>
+      <ul>
+        <li><a href="#pré-requisitos">Pré-requisitos</a></li>
+        <li><a href="#instalação">Instalação</a></li>
+      </ul>
+    </li>
+    <li><a href="#uso">Uso</a></li>
+    <li><a href="#contribuindo">Contribuindo</a></li>
+    <li><a href="#licença">Licença</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ol>
+</details>
 
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
+<!-- SOBRE O PROJETO -->
+## Sobre O Projeto
 
-#### Frontend
+Este projeto resolve o problema de proteção de documentos, permitindo que usuários insiram identificações visuais (como logotipo ou texto de confidencialidade) antes de compartilhá-los. O funcionamento principal ocorre através do upload de um PDF pelo usuário, que pode escolher entre uma marca d'água de texto (customizando cor, fonte e tamanho) ou de imagem (fazendo o upload do arquivo). O sistema processa o arquivo no servidor, sobrepondo a marca d'água na opacidade e posição definidas, e retorna automaticamente o PDF final para download. O processamento é seguro, realizado em memória sem salvar os arquivos temporários no disco do servidor.
 
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+Principais características:
+* **Tipos de Marca d'Água:** Texto customizado ou imagem.
+* **Controle de Estilo Total:** Personalize opacidade, cor e tamanho da fonte.
+* **Processamento Seguro em Memória:** Uploads e edições feitas diretamente na memória.
+* **Interface Dinâmica:** O formulário se adapta com base no tipo escolhido.
 
-#### Code Quality
+[![Screen Shot][product-screenshot]](assets/image.png)
 
-![Flake8](https://img.shields.io/badge/Flake8-4B8BBE?style=for-the-badge&logo=python&logoColor=white)
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
-## ⚙️ How It Works (Technical Flow)
+### Construído Com
 
-1.  **User Interface:** The user accesses the main page, which displays a dynamic form built with **Flask-WTF** for data validation and CSRF protection. JavaScript adapts the UI based on the chosen watermark type.
-2.  **Data Submission:** The PDF file and its settings are sent via a `POST` request to the Flask server.
-3.  **In-Memory Processing:** The `add_watermark` function uses **ReportLab** to generate a watermark PDF and **PyPDF2** to merge it with the original PDF. The entire process occurs in memory using `io.BytesIO`, ensuring performance and security by not writing files to disk.
-4.  **Response & Download:** The application returns the modified PDF file directly in the HTTP response with a `Content-Disposition` header, triggering the download in the user's browser without saving the final file on the server.
+* [![Python][Python]][Python-url]
+* [![Flask][Flask]][Flask-url]
+* [![HTML5][HTML5]][HTML5-url]
+* [![CSS3][CSS3]][CSS3-url]
+* [![PyPDF2][PyPDF2]][PyPDF2-url]
+* [![Ruff][Ruff]][Ruff-url]
 
-## 🚀 Getting Started
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
-### Local Setup (Recommended for Development)
+<!-- COMEÇANDO -->
+## Começando
 
-**Prerequisites:**
+Para executar uma cópia local funcionando, siga os passos abaixo. O gerenciamento de dependências é feito com a ferramenta `uv`.
 
-- Python 3.8+
+### Pré-requisitos
 
-**Steps:**
+* uv
+  ```sh
+  curl -LsSf https://astral.sh/uv/install.sh | sh
+  ```
 
-1.  **Clone the repository:**
+### Instalação
 
-    ```bash
-    git clone https://github.com/alissonpef/Flask-PDF-Watermarker.git
-    cd Flask-PDF-Watermarker
-    ```
+1. Clone o repositório
+   ```sh
+   git clone https://github.com/alissonpef/Flask-PDF-Watermarker.git
+   cd Flask-PDF-Watermarker
+   ```
+2. Sincronize as dependências e crie o ambiente virtual automaticamente
+   ```sh
+   uv sync
+   ```
+3. Crie as variáveis de ambiente baseadas no exemplo (se necessário)
+   ```sh
+   cp .env.example .env
+   ```
+4. Inicie o servidor de desenvolvimento
+   ```sh
+   uv run flask run
+   ```
 
-2.  **Create and activate a virtual environment:**
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
-    ```bash
-    python -m venv env
-    ```
+<!-- EXEMPLOS DE USO -->
+## Uso
 
-    - On Windows (using Git Bash): `source env/Scripts/activate`
-    - On macOS or Linux: `source env/bin/activate`
+Acesse a aplicação em `http://127.0.0.1:5000` em seu navegador. Envie um arquivo PDF, escolha se deseja colocar uma marca d'água de texto ou imagem, ajuste a opacidade e posicione como preferir, depois clique em enviar para receber seu documento protegido.
 
-3.  **Install the dependencies:**
-
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-4.  **Set up environment variables:**
-
-    - Make a copy of the `.env.example` file and rename it to `.env`.
-    - Open the `.env` file and add a long, random `SECRET_KEY`.
-      ```
-      SECRET_KEY='your-super-secret-and-long-key'
-      ```
-    - The `.flaskenv` file is already configured for the development environment.
-
-5.  **Run the application:**
-
-    ```bash
-    flask run
-    ```
-
-6.  Access the application at **http://127.0.0.1:5000** in your browser.
-
-## 📁 Project Structure
-
+Para rodar a verificação de linter e formatação com o Ruff:
+```sh
+uv run ruff format .
+uv run ruff check .
 ```
-/
-├── .env.example        # Environment variables template
-├── .flaskenv           # Variables for the Flask CLI
-├── .flake8             # Flake8 linter configuration
-├── .gitignore          # Files ignored by Git
-├── requirements.txt    # Python dependencies
-├── api/                # Application source code
-│   ├── __init__.py     # Makes the directory a Python package
-│   ├── index.py        # Main logic and Flask routes
-│   ├── forms.py        # Flask-WTF forms definitions
-│   └── pdf_utils.py    # PDF manipulation logic
-├── static/             # Static files (CSS, JS)
-└── templates/          # HTML templates (Jinja2)
-```
 
-## lint Code Quality
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
-This project uses **Flake8** to ensure a clean, readable, and consistent codebase, following Python community best practices. The configuration can be found in the `.flake8` file.
+<!-- CONTRIBUINDO -->
+## Contribuindo
 
-To check the code, run:
+As contribuições são o que tornam a comunidade open source um lugar tão incrível para aprender, inspirar e criar. Qualquer contribuição que você fizer será **muito apreciada**.
 
-```bash
-flake8 api
-```
+1. Faça o Fork do Projeto
+2. Crie a sua Branch de Funcionalidade (`git checkout -b feature/FuncionalidadeIncrivel`)
+3. Commit suas Mudanças (`git commit -m 'Adicione alguma FuncionalidadeIncrivel'`)
+4. Faça o Push para a Branch (`git push origin feature/FuncionalidadeIncrivel`)
+5. Abra um Pull Request
 
----
+### Principais contribuidores:
 
-## 📫 Let's Connect!
+<a href="https://github.com/alissonpef/Flask-PDF-Watermarker/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=alissonpef/Flask-PDF-Watermarker" alt="imagem contrib.rocks" />
+</a>
 
-I'd love to chat about backend development, Python, Flask, or other technologies. Feel free to reach out or connect with me on social media.
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/alisson-pereira-ferreira-45022623b/)
-[![Gmail](https://img.shields.io/badge/Gmail-%23EA4335.svg?style=for-the-badge&logo=gmail&logoColor=white)](mailto:alissonpef@gmail.com)
+<!-- LICENÇA -->
+## Licença
+
+Distribuído sob a Licença MIT. Veja `LICENSE` para mais informações.
+
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
+
+<!-- CONTATO -->
+## Contato
+
+Alisson Pereira Ferreira - alissonpef@gmail.com - [LinkedIn](https://www.linkedin.com/in/alisson-pereira-ferreira/)
+
+Link do Projeto: [https://github.com/alissonpef/Flask-PDF-Watermarker](https://github.com/alissonpef/Flask-PDF-Watermarker)
+
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
 ---
 
 Made with ❤️ by **Alisson Pereira**.
+
+<!-- MARKDOWN LINKS & IMAGES -->
+[contributors-shield]: https://img.shields.io/github/contributors/alissonpef/Flask-PDF-Watermarker.svg?style=for-the-badge
+[contributors-url]: https://github.com/alissonpef/Flask-PDF-Watermarker/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/alissonpef/Flask-PDF-Watermarker.svg?style=for-the-badge
+[forks-url]: https://github.com/alissonpef/Flask-PDF-Watermarker/network/members
+[stars-shield]: https://img.shields.io/github/stars/alissonpef/Flask-PDF-Watermarker.svg?style=for-the-badge
+[stars-url]: https://github.com/alissonpef/Flask-PDF-Watermarker/stargazers
+[issues-shield]: https://img.shields.io/github/issues/alissonpef/Flask-PDF-Watermarker.svg?style=for-the-badge
+[issues-url]: https://github.com/alissonpef/Flask-PDF-Watermarker/issues
+[license-shield]: https://img.shields.io/github/license/alissonpef/Flask-PDF-Watermarker.svg?style=for-the-badge
+[license-url]: https://github.com/alissonpef/Flask-PDF-Watermarker/blob/main/LICENSE
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/in/alisson-pereira-ferreira/
+[Python]: https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white
+[Python-url]: https://www.python.org/
+[Flask]: https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white
+[Flask-url]: https://flask.palletsprojects.com/
+[HTML5]: https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
+[HTML5-url]: https://developer.mozilla.org/en-US/docs/Web/HTML
+[CSS3]: https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
+[CSS3-url]: https://developer.mozilla.org/en-US/docs/Web/CSS
+[JavaScript]: https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black
+[JavaScript-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+[PyPDF2]: https://img.shields.io/badge/PyPDF2-FF4B4B?style=for-the-badge
+[PyPDF2-url]: https://pypdf2.readthedocs.io/
+[Ruff]: https://img.shields.io/badge/Ruff-E5A01D?style=for-the-badge
+[Ruff-url]: https://docs.astral.sh/ruff/
+[product-screenshot]: assets/image.png
+
