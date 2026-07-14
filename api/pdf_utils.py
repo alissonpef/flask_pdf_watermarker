@@ -1,4 +1,5 @@
 from io import BytesIO
+
 from PIL import Image
 from PyPDF2 import PdfReader, PdfWriter
 from reportlab.lib.colors import Color, toColor
@@ -52,9 +53,7 @@ def add_watermark(pdf_stream, watermark_type, **kwargs):
             else:
                 can.translate(width / 2, height / 2)
                 can.rotate(45)
-                for x in range(
-                    -int(width * 1.5), int(width * 1.5), int(display_width + 100)
-                ):
+                for x in range(-int(width * 1.5), int(width * 1.5), int(display_width + 100)):
                     for y in range(
                         -int(height * 1.5), int(height * 1.5), int(display_height + 100)
                     ):
@@ -67,7 +66,7 @@ def add_watermark(pdf_stream, watermark_type, **kwargs):
                             mask="auto",
                         )
         except Exception as e:
-            raise ValueError(f"Could not process the image file: {e}")
+            raise ValueError(f"Could not process the image file: {e}") from e
 
     elif watermark_type == "text" and "text" in kwargs:
         text = kwargs.get("text", "")

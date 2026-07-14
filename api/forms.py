@@ -29,9 +29,7 @@ class UploadForm(FlaskForm):
         default="#c0c0c0",
         validators=[
             Optional(),
-            Regexp(
-                r"^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$", message="Invalid color code."
-            ),
+            Regexp(r"^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$", message="Invalid color code."),
         ],
     )
 

@@ -7,7 +7,7 @@ from .forms import UploadForm
 from .pdf_utils import add_watermark
 
 app = Flask(__name__, template_folder="../templates", static_folder="../static")
-app.config["SECRET_KEY"] = os.urandom(24)
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "dev-key-for-local-use-only")
 
 
 @app.route("/", methods=["GET", "POST"])
