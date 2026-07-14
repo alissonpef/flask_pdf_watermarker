@@ -1,5 +1,5 @@
 def main():
-    print("Hello from flask-pdf-watermarker!")
+    print("Hello from flask_pdf_watermarker!")
 
 
 if __name__ == "__main__":

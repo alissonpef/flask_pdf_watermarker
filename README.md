@@ -11,7 +11,7 @@
 <!-- LOGOTIPO DO PROJETO -->
 <br />
 <div align="center">
-  <a href="https://github.com/alissonpef/Flask-PDF-Watermarker">
+  <a href="https://github.com/alissonpef/flask_pdf_watermarker">
     <img src="assets/logo.png" alt="Logo" width="150" height="150">
   </a>
 
@@ -21,9 +21,9 @@
     Uma aplicação web robusta em Flask para adicionar marcas d'água personalizadas (texto ou imagem) aos seus arquivos PDF, protegendo seus documentos de forma simples e eficiente.
     <br />
     <br />
-    <a href="https://github.com/alissonpef/Flask-PDF-Watermarker/issues/new?labels=bug&template=bug-report---.md">Reportar Bug</a>
+    <a href="https://github.com/alissonpef/flask_pdf_watermarker/issues/new?labels=bug&template=bug-report---.md">Reportar Bug</a>
     &middot;
-    <a href="https://github.com/alissonpef/Flask-PDF-Watermarker/issues/new?labels=enhancement&template=feature-request---.md">Solicitar Recurso</a>
+    <a href="https://github.com/alissonpef/flask_pdf_watermarker/issues/new?labels=enhancement&template=feature-request---.md">Solicitar Recurso</a>
   </p>
 </div>
 
@@ -93,8 +93,8 @@ Para executar uma cópia local funcionando, siga os passos abaixo. O gerenciamen
 
 1. Clone o repositório
    ```sh
-   git clone https://github.com/alissonpef/Flask-PDF-Watermarker.git
-   cd Flask-PDF-Watermarker
+   git clone https://github.com/alissonpef/flask_pdf_watermarker.git
+   cd flask_pdf_watermarker
    ```
 2. Sincronize as dependências e crie o ambiente virtual automaticamente
    ```sh
@@ -137,8 +137,8 @@ As contribuições são o que tornam a comunidade open source um lugar tão incr
 
 ### Principais contribuidores:
 
-<a href="https://github.com/alissonpef/Flask-PDF-Watermarker/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=alissonpef/Flask-PDF-Watermarker" alt="imagem contrib.rocks" />
+<a href="https://github.com/alissonpef/flask_pdf_watermarker/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=alissonpef/flask_pdf_watermarker" alt="imagem contrib.rocks" />
 </a>
 
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
@@ -155,7 +155,7 @@ Distribuído sob a Licença MIT. Veja `LICENSE` para mais informações.
 
 Alisson Pereira Ferreira - alissonpef@gmail.com - [LinkedIn](https://www.linkedin.com/in/alisson-pereira-ferreira/)
 
-Link do Projeto: [https://github.com/alissonpef/Flask-PDF-Watermarker](https://github.com/alissonpef/Flask-PDF-Watermarker)
+Link do Projeto: [https://github.com/alissonpef/flask_pdf_watermarker](https://github.com/alissonpef/flask_pdf_watermarker)
 
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
@@ -164,16 +164,16 @@ Link do Projeto: [https://github.com/alissonpef/Flask-PDF-Watermarker](https://g
 Made with ❤️ by **Alisson Pereira**.
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[contributors-shield]: https://img.shields.io/github/contributors/alissonpef/Flask-PDF-Watermarker.svg?style=for-the-badge
-[contributors-url]: https://github.com/alissonpef/Flask-PDF-Watermarker/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/alissonpef/Flask-PDF-Watermarker.svg?style=for-the-badge
-[forks-url]: https://github.com/alissonpef/Flask-PDF-Watermarker/network/members
-[stars-shield]: https://img.shields.io/github/stars/alissonpef/Flask-PDF-Watermarker.svg?style=for-the-badge
-[stars-url]: https://github.com/alissonpef/Flask-PDF-Watermarker/stargazers
-[issues-shield]: https://img.shields.io/github/issues/alissonpef/Flask-PDF-Watermarker.svg?style=for-the-badge
-[issues-url]: https://github.com/alissonpef/Flask-PDF-Watermarker/issues
-[license-shield]: https://img.shields.io/github/license/alissonpef/Flask-PDF-Watermarker.svg?style=for-the-badge
-[license-url]: https://github.com/alissonpef/Flask-PDF-Watermarker/blob/main/LICENSE
+[contributors-shield]: https://img.shields.io/github/contributors/alissonpef/flask_pdf_watermarker.svg?style=for-the-badge
+[contributors-url]: https://github.com/alissonpef/flask_pdf_watermarker/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/alissonpef/flask_pdf_watermarker.svg?style=for-the-badge
+[forks-url]: https://github.com/alissonpef/flask_pdf_watermarker/network/members
+[stars-shield]: https://img.shields.io/github/stars/alissonpef/flask_pdf_watermarker.svg?style=for-the-badge
+[stars-url]: https://github.com/alissonpef/flask_pdf_watermarker/stargazers
+[issues-shield]: https://img.shields.io/github/issues/alissonpef/flask_pdf_watermarker.svg?style=for-the-badge
+[issues-url]: https://github.com/alissonpef/flask_pdf_watermarker/issues
+[license-shield]: https://img.shields.io/github/license/alissonpef/flask_pdf_watermarker.svg?style=for-the-badge
+[license-url]: https://github.com/alissonpef/flask_pdf_watermarker/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/alisson-pereira-ferreira/
 [Python]: https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white
