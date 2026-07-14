@@ -1,124 +1,126 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PDF Protector</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='styles.css') }}"
-    />
-    <style>
-      .error-message {
-        color: #dc3545;
-        font-size: 0.9rem;
-        margin-top: 5px;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <h1>PDF Protector</h1>
-      <h2>Add a text or image watermark to protect your documents.</h2>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>PDF Protector</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='styles.css') }}"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <h1>PDF Protector</h1>
+            <h2>Add a text or image watermark to protect your documents.</h2>
 
-      <form method="POST" enctype="multipart/form-data" novalidate>
-        {{ form.hidden_tag() }}
+            <form method="POST" enctype="multipart/form-data" novalidate>
+                {{ form.hidden_tag() }}
 
-        <div class="form-group">
-          {{ form.watermark_type.label }}
-          <div class="radio-group">
-            {% for subfield in form.watermark_type %}
-            <label class="radio-label">
-              {{ subfield }} {{ subfield.label.text }}
-            </label>
-            {% endfor %}
-          </div>
+                <div class="form-group">
+                    {{ form.watermark_type.label }}
+                    <div class="radio-group">
+                        {% for subfield in form.watermark_type %}
+                        <label class="radio-label">
+                            {{ subfield }} {{ subfield.label.text }}
+                        </label>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div id="text-fields">
+                    <div class="form-group">
+                        {{ form.watermark_text.label }} {{
+                        form.watermark_text(class="form-input") }}
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            {{ form.font_size.label }} {{
+                            form.font_size(class="form-input") }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.color.label }} {{
+                            form.color(class="form-input", type="color") }}
+                        </div>
+                    </div>
+                </div>
+
+                <div id="image-fields" style="display: none">
+                    <div class="form-group">
+                        {{ form.watermark_image.label }} {{
+                        form.watermark_image(class="form-input") }}
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        {{ form.position.label }} {{
+                        form.position(class="form-select") }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.opacity.label }} {{
+                        form.opacity(class="form-input") }} {% if
+                        form.opacity.errors %}
+                        <div class="error-message">
+                            {% for error in form.opacity.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{ form.pdf_file.label }} {{
+                    form.pdf_file(class="form-input") }}
+                </div>
+
+                {{ form.submit(class="submit-btn") }}
+            </form>
+
+            {% with messages = get_flashed_messages() %} {% if messages %}
+            <ul class="flashes">
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %} {% endwith %}
         </div>
 
-        <div id="text-fields">
-          <div class="form-group">
-            {{ form.watermark_text.label }} {{
-            form.watermark_text(class="form-input") }}
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              {{ form.font_size.label }} {{ form.font_size(class="form-input")
-              }}
-            </div>
-            <div class="form-group">
-              {{ form.color.label }} {{ form.color(class="form-input",
-              type="color") }}
-            </div>
-          </div>
-        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const watermarkTypeRadios = document.querySelectorAll(
+                    'input[name="watermark_type"]',
+                );
+                const textFields = document.getElementById("text-fields");
+                const imageFields = document.getElementById("image-fields");
 
-        <div id="image-fields" style="display: none">
-          <div class="form-group">
-            {{ form.watermark_image.label }} {{
-            form.watermark_image(class="form-input") }}
-          </div>
-        </div>
+                function toggleWatermarkFields() {
+                    const selectedType = document.querySelector(
+                        'input[name="watermark_type"]:checked',
+                    ).value;
 
-        <div class="form-row">
-          <div class="form-group">
-            {{ form.position.label }} {{ form.position(class="form-select") }}
-          </div>
-          <div class="form-group">
-            {{ form.opacity.label }} {{ form.opacity(class="form-input") }} {%
-            if form.opacity.errors %}
-            <div class="error-message">
-              {% for error in form.opacity.errors %}
-              <span>{{ error }}</span>
-              {% endfor %}
-            </div>
-            {% endif %}
-          </div>
-        </div>
+                    if (selectedType === "text") {
+                        textFields.style.display = "block";
+                        imageFields.style.display = "none";
+                    } else {
+                        textFields.style.display = "none";
+                        imageFields.style.display = "block";
+                    }
+                }
 
-        <div class="form-group">
-          {{ form.pdf_file.label }} {{ form.pdf_file(class="form-input") }}
-        </div>
+                watermarkTypeRadios.forEach((radio) => {
+                    radio.addEventListener("change", toggleWatermarkFields);
+                });
 
-        {{ form.submit(class="submit-btn") }}
-      </form>
-
-      {% with messages = get_flashed_messages() %} {% if messages %}
-      <ul class="flashes">
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-      </ul>
-      {% endif %} {% endwith %}
-    </div>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const watermarkTypeRadios = document.querySelectorAll(
-          'input[name="watermark_type"]'
-        );
-        const textFields = document.getElementById("text-fields");
-        const imageFields = document.getElementById("image-fields");
-
-        function toggleWatermarkFields() {
-          const selectedType = document.querySelector(
-            'input[name="watermark_type"]:checked'
-          ).value;
-
-          if (selectedType === "text") {
-            textFields.style.display = "block";
-            imageFields.style.display = "none";
-          } else {
-            textFields.style.display = "none";
-            imageFields.style.display = "block";
-          }
-        }
-
-        watermarkTypeRadios.forEach((radio) => {
-          radio.addEventListener("change", toggleWatermarkFields);
-        });
-
-        toggleWatermarkFields();
-      });
-    </script>
-  </body>
+                toggleWatermarkFields();
+            });
+        </script>
+    </body>
 </html>
